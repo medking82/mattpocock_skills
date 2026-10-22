@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skills"
+  short_description: "Matt Pocock Workflows With LLM And Jev Routing"
+  default_prompt: "Use $skills To Choose And Apply The Workflow For My Task."

@@ -1,0 +1,58 @@
+{
+  "upstream": {
+    "repository": "mattpocock/skills",
+    "commit": "5beb35b040e3de97e54fa9e386d7e42d15c295c2"
+  },
+  "source": {
+    "repository": "medking82/mattpocock_skills",
+    "commit": "4ca064c41d7dae97dc9281331c0a962023fc3c4e"
+  },
+  "groups": {
+    "engineering": [
+      "ask-matt",
+      "code-review",
+      "codebase-design",
+      "diagnosing-bugs",
+      "domain-modeling",
+      "grill-with-docs",
+      "implement-spec",
+      "implement",
+      "improve-codebase-architecture",
+      "pr",
+      "prototype",
+      "research",
+      "retro",
+      "setup-matt-pocock-skills",
+      "tdd",
+      "to-spec",
+      "to-tickets",
+      "triage",
+      "wayfinder",
+      "wizard"
+    ],
+    "productivity": [
+      "grill-me",
+      "grilling",
+      "handoff",
+      "teach",
+      "to-questionnaire",
+      "wait-what",
+      "writing-for-agents"
+    ],
+    "in-progress": [
+      "chief-of-staff",
+      "claude-handoff",
+      "loop-me",
+      "setup-ts-deep-modules",
+      "writing-beats",
+      "writing-fragments",
+      "writing-shape"
+    ],
+    "misc": [
+      "git-guardrails-claude-code",
+      "migrate-to-shoehorn",
+      "scaffold-exercises",
+      "setup-pre-commit"
+    ]
+  }
+}
