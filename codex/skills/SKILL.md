@@ -21,15 +21,23 @@ Read [Codex compatibility](references/compatibility.md) before a workflow.
   workflows to this router. Set `invoked: true` for that case. Without it, preserve
   each workflow's original implicit-invocation policy. Beta/misc workflows require
   the user to name the workflow; their full descriptions are in the catalog.
-- The script returns a guide path, `no_match`, or `llm_required`. Check the fit
-  before loading a recommendation. For `llm_required`, select using the catalog
+- The script returns a guide path, `no_match`, or `llm_required`. Treat a Jev result
+  as a second opinion on the main LLM's workflow choice. On disagreement, recheck
+  the request, invocation policy and guide evidence once, then make the final
+  choice without another Jev call. For `llm_required`, select using the catalog
   and task evidence; don't loop, change models, or ask for routine permission.
   For no match, continue normally with any applicable installed capability.
 - State the chosen workflow briefly. Read its full guide before executing it.
   Follow dependencies as reference reads, not fresh catalog selections. Re-route
   only when the objective changes or the next phase needs a different workflow.
 - Reuse an existing Jev workflow recommendation for the same task. An outer hook
-  that selected this umbrella has not yet selected its internal workflow.
+  that selected this umbrella has not yet selected its internal workflow; these
+  different routing layers are not a disagreement. Failure or fallback is an
+  abstention, not a competing route.
+
+`native-review` owns admitted code review. The collection's `code-review` guide can
+inform that work, but does not add a parallel reviewer or replace its evidence owner.
+A routing disagreement alone does not authorize code review.
 
 ## Workflow Map
 
