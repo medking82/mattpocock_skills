@@ -83,7 +83,7 @@ def route(payload, decide=None):
     choice = answer.get("choice")
     confidence = answer.get("confidence")
     if (not isinstance(choice, str) or choice not in options
-            or not isinstance(confidence, (int, float)) or not 0.5 <= confidence <= 1):
+            or isinstance(confidence, bool) or not isinstance(confidence, (int, float)) or not 0.5 <= confidence <= 1):
         return fallback("invalid_or_uncertain_reply", eligible)
     if choice == "none":
         return {"status": "no_match", "source": "jev", "confidence": confidence}

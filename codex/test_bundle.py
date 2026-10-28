@@ -105,6 +105,17 @@ class RoutingTests(unittest.TestCase):
                 self.assertEqual(router.route({"request": "Implement", "invoked": True},
                                               lambda _: answer)["status"], "llm_required")
 
+    def test_confidence_must_be_a_real_number_in_range(self):
+        payload = {"request": "Implement", "invoked": True, "candidates": ["implement", "tdd"]}
+        for confidence in (True, False, "0.9", None, float("nan"), float("inf"), float("-inf"), -1, 1.01):
+            with self.subTest(confidence=confidence):
+                result = router.route(payload, lambda _: {"status": "ok", "choice": "implement", "confidence": confidence})
+                self.assertEqual((result["status"], result["reason"]), ("llm_required", "invalid_or_uncertain_reply"))
+        for confidence in (0.5, 1.0):
+            with self.subTest(confidence=confidence):
+                result = router.route(payload, lambda _: {"status": "ok", "choice": "implement", "confidence": confidence})
+                self.assertEqual((result["status"], result["workflow"]), ("ok", "implement"))
+
     def test_no_match_and_disabled_integration(self):
         result = router.route({"request": "Check weather", "invoked": True},
                               lambda _: {"status": "ok", "choice": "none", "confidence": 0.9})
