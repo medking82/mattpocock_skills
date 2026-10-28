@@ -1,4 +1,4 @@
-> Source: [skills/engineering/implement/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/4ca064c41d7dae97dc9281331c0a962023fc3c4e/skills/engineering/implement/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/engineering/implement/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/3a91e1138de4b6c86988e24a643b00054592207f/skills/engineering/implement/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 Implement the work described by the user in the spec or tickets.
