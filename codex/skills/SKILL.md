@@ -1,43 +1,37 @@
 ---
 name: skills
-description: Matt Pocock workflows for debugging, TDD, code review, specs, ticket breakdown, module architecture, domain modeling, prototypes, research, handoffs and learning. One entrypoint with LLM selection and Jev help for ambiguity. Use when this collection fits or the user invokes $skills; not for installing or listing unrelated skills, generic UI styling or unrelated tasks.
+description: Matt Pocock workflows for debugging, TDD, code review, specs, ticket breakdown, module architecture, domain modeling, prototypes, research, handoffs and learning. One entrypoint where the main LLM selects the workflow. Use when this collection fits or the user invokes $skills; not for installing or listing unrelated skills, generic UI styling or unrelated tasks.
 ---
 
 # Skills
 
 One entrypoint for Matt Pocock's collection. The current LLM owns the work and
-chooses the relevant workflow; Jev supplies a bounded recommendation when needed.
+chooses the relevant workflow.
 Read [Codex compatibility](references/compatibility.md) before a workflow.
 
 ## Select The Workflow
 
 - Honor a workflow explicitly named by the user. Resolve it in
   [the catalog](references/catalog.json); read its guide and only the dependencies
-  needed for the task. No Jev call is needed for an explicit or settled choice.
+  needed for the task.
 - Otherwise choose the smallest fitting workflow from the map below. For ambiguous
-  choices, use `scripts/route.py` with a short, non-sensitive task summary. It calls
-  the existing installed Jev adapter, not another general LLM or a new provider.
+  choices, compare the catalog descriptions and invocation policies. Choose by the
+  requested outcome and current phase, not just shared words, and do not add
+  interviews, planning or implementation the user did not ask for.
 - An explicit `$skills` invocation delegates the choice among the 27 promoted
-  workflows to this router. Set `invoked: true` for that case. Without it, preserve
-  each workflow's original implicit-invocation policy. Beta/misc workflows require
-  the user to name the workflow; their full descriptions are in the catalog.
-- The script returns a guide path, `no_match`, or `llm_required`. Treat a Jev result
-  as a second opinion on the main LLM's workflow choice. On disagreement, recheck
-  the request, invocation policy and guide evidence once, then make the final
-  choice without another Jev call. For `llm_required`, select using the catalog
-  and task evidence; don't loop, change models, or ask for routine permission.
-  For no match, continue normally with any applicable installed capability.
+  workflows to the current LLM. Without it, preserve each workflow's original
+  implicit-invocation policy (`implicit` in the catalog). Beta/misc workflows
+  require the user to name the workflow; their full descriptions are in the catalog.
+- Make the choice once; don't loop, change models, or ask for routine permission.
+  When no workflow fits, continue normally with any applicable installed capability.
 - State the chosen workflow briefly. Read its full guide before executing it.
   Follow dependencies as reference reads, not fresh catalog selections. Re-route
   only when the objective changes or the next phase needs a different workflow.
-- Reuse an existing Jev workflow recommendation for the same task. An outer hook
-  that selected this umbrella has not yet selected its internal workflow; these
-  different routing layers are not a disagreement. Failure or fallback is an
-  abstention, not a competing route.
+- An outer hook that selected this umbrella has not yet selected its internal
+  workflow; make that choice here.
 
 `native-review` owns admitted code review. The collection's `code-review` guide can
 inform that work, but does not add a parallel reviewer or replace its evidence owner.
-A routing disagreement alone does not authorize code review.
 
 ## Workflow Map
 
@@ -72,27 +66,3 @@ For the remaining workflows and exact invocation policies, read
 [ask-matt](references/engineering/ask-matt/guide.md) only when the relationship
 between phases itself needs explanation. A settled ticket does not need the
 whole idea-to-spec-to-tickets flow.
-
-## Jev Invocation
-
-Read the installed `jev` skill before first Jev use unless already loaded.
-The input may come from stdin or `--input`; never put private task text in argv.
-Example JSON for an explicitly invoked umbrella:
-
-```json
-{"request":"Find why our test sometimes fails; choose diagnosis or implementation.","invoked":true,"candidates":["diagnosing-bugs","implement","tdd"]}
-```
-
-Omit `candidates` to consider all eligible workflows. Supply `workflow` only
-when the user explicitly named that workflow. `--catalog` prints metadata
-without inference.
-
-On Windows, run with the actual Python interpreter through the hidden runner:
-
-```powershell
-& "C:\Users\Marck\.codex\bin\invoke-hidden.ps1" -FilePath (Get-Command python.exe).Source -ArgumentList @("-B", "<skill-dir>\scripts\route.py", "--input", "<workspace>\route-input.json") -WorkingDirectory "<workspace>"
-```
-
-On other hosts, use their native Python and workspace rules. The adapter uses
-the existing Jev credentials and disables; no credentials, provider settings,
-hooks or main-model settings are changed by this skill.

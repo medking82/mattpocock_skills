@@ -9,9 +9,9 @@ retains upstream invocation policies.
 Use `$skills <task>`, or choose **Skills** from the skill picker. Codex's built-in
 `/skills` command opens the picker; this package does not replace it.
 
-The main LLM handles clear choices. `skills/scripts/route.py` uses the existing
-Jev adapter for ambiguity and returns control to the main LLM on failure. It
-installs no model, credentials, hook, provider or scheduled updater.
+The main LLM selects the workflow from the catalog and workflow map. The package
+ships no routing script and installs no model, credentials, hook, provider or
+scheduled updater.
 
 ## Sources And Rebuild
 
