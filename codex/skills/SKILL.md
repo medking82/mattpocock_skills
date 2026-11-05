@@ -18,7 +18,7 @@ Read [Codex compatibility](references/compatibility.md) before a workflow.
   choices, compare the catalog descriptions and invocation policies. Choose by the
   requested outcome and current phase, not just shared words, and do not add
   interviews, planning or implementation the user did not ask for.
-- An explicit `$skills` invocation delegates the choice among the 27 promoted
+- An explicit `$skills` invocation delegates the choice among the promoted
   workflows to the current LLM. Without it, preserve each workflow's original
   implicit-invocation policy (`implicit` in the catalog). Beta/misc workflows
   require the user to name the workflow; their full descriptions are in the catalog.

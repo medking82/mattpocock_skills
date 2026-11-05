@@ -11,6 +11,26 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent
 BUNDLE = ROOT / "skills"
+BUCKETS = ("engineering", "productivity", "in-progress", "misc")
+
+
+def parse_frontmatter(block, name):
+    """YAML first; upstream has shipped unquoted ``key: a: b`` descriptions, so fall back to
+    reading top-level ``key: value`` lines as plain strings rather than failing the refresh."""
+    try:
+        return yaml.safe_load(block)
+    except yaml.YAMLError:
+        metadata, key = {}, None
+        for line in block.splitlines():
+            match = re.match(r"^([A-Za-z0-9_-]+):\s*(.*)$", line)
+            if match:
+                key, value = match[1], match[2].strip().strip("\"'")
+                metadata[key] = {"true": True, "false": False}.get(value, value)
+            elif key and line.startswith((" ", "	")) and isinstance(metadata[key], str):
+                metadata[key] = f"{metadata[key]} {line.strip()}".strip()
+        if "name" not in metadata:
+            raise ValueError(f"Unreadable frontmatter: {name}")
+        return metadata
 
 
 def render():
@@ -26,7 +46,7 @@ def render():
             parts = raw.decode("utf-8").split("---", 2)
             if len(parts) != 3 or parts[0].strip():
                 raise ValueError(f"Missing frontmatter: {name}")
-            metadata = yaml.safe_load(parts[1])
+            metadata = parse_frontmatter(parts[1], name)
             if metadata["name"] != name:
                 raise ValueError(f"Workflow ID mismatch: {name}")
             policy_file = folder / "agents/openai.yaml"
@@ -117,24 +137,51 @@ def render():
     return generated
 
 
+def stale_outputs(generated, groups):
+    """Files under the generated bucket trees that the current source no longer produces."""
+    stale = []
+    for bucket in sorted(set(groups) | set(BUCKETS)):
+        tree = BUNDLE / "references" / bucket
+        if tree.is_dir():
+            stale += [path for path in sorted(tree.rglob("*"))
+                      if path.is_file() and path.relative_to(BUNDLE).as_posix() not in generated]
+    return stale
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument(
+        "--replace", action="store_true",
+        help="Overwrite changed outputs and delete stale ones. For the automated refresh "
+             "(codex/refresh_bundle.py); review the diff before accepting it by hand.")
     args = parser.parse_args()
+    if args.check and args.replace:
+        raise SystemExit("--check and --replace are mutually exclusive")
     generated = render()
+    groups = json.loads((ROOT / "source-lock.json").read_text(encoding="utf-8"))["groups"]
+    stale = stale_outputs(generated, groups)
     for name, data in generated.items():
         target = BUNDLE / name
-        if target.exists() and target.read_bytes() != data:
-            raise SystemExit(f"Existing output differs; review before replacing: {target}")
         if args.check and not target.is_file():
             raise SystemExit(f"Missing generated output: {target}")
+        if not args.replace and target.exists() and target.read_bytes() != data:
+            raise SystemExit(f"Existing output differs; review before replacing: {target}")
+    if stale and not args.replace:
+        raise SystemExit(f"Stale output no longer in the source; review before removing: {stale[0]}")
     if not args.check:
         for name, data in generated.items():
             target = BUNDLE / name
             target.parent.mkdir(parents=True, exist_ok=True)
-            if not target.exists():
+            if not target.exists() or (args.replace and target.read_bytes() != data):
                 target.write_bytes(data)
-    print(json.dumps({"status": "ok", "check": args.check, "generated_files": len(generated)}))
+        for path in stale:
+            path.unlink()
+        for directory in sorted((BUNDLE / "references").rglob("*"), reverse=True):
+            if directory.is_dir() and not any(directory.iterdir()):
+                directory.rmdir()
+    print(json.dumps({"status": "ok", "check": args.check, "replace": args.replace,
+                      "generated_files": len(generated), "removed_files": len(stale) if args.replace else 0}))
 
 
 if __name__ == "__main__":
