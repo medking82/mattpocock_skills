@@ -10,8 +10,8 @@ Read only the chosen workflow and its required dependencies.
 - [diagnosing-bugs](engineering/diagnosing-bugs/guide.md) (implicit): Diagnosis loop for hard bugs and performance regressions. Use when the user says "diagnose"/"debug this", or reports something broken/throwing/failing/slow.
 - [domain-modeling](engineering/domain-modeling/guide.md) (implicit): Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recording or editing an ADR.
 - [grill-with-docs](engineering/grill-with-docs/guide.md) (umbrella invocation): A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.
-- [implement-spec](engineering/implement-spec/guide.md) (umbrella invocation): Implement the result of /to-spec and /to-tickets in code.
 - [implement](engineering/implement/guide.md) (umbrella invocation): Implement a piece of work based on a spec or set of tickets.
+- [implement-spec](engineering/implement-spec/guide.md) (umbrella invocation): Implement the result of /to-spec and /to-tickets in code.
 - [improve-codebase-architecture](engineering/improve-codebase-architecture/guide.md) (umbrella invocation): Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.
 - [pr](engineering/pr/guide.md) (implicit): Use when writing a PR body.
 - [prototype](engineering/prototype/guide.md) (implicit): Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.
@@ -41,6 +41,7 @@ Read only the chosen workflow and its required dependencies.
 - [claude-handoff](in-progress/claude-handoff/guide.md) (named-only): Hand the current conversation off to a fresh background agent that picks up the work immediately.
 - [loop-me](in-progress/loop-me/guide.md) (named-only): Grill me about specs for the workflows I want to build, within this workspace.
 - [setup-ts-deep-modules](in-progress/setup-ts-deep-modules/guide.md) (named-only): Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reachable only through its entry-point files. User-invoked.
+- [software-factory](in-progress/software-factory/guide.md) (named-only): Shared language for designing a software factory: the tasks it runs and the services it plugs into.
 - [writing-beats](in-progress/writing-beats/guide.md) (named-only): Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it.
 - [writing-fragments](in-progress/writing-fragments/guide.md) (named-only): Writing, explore: mine raw fragments, no structure yet.
 - [writing-shape](in-progress/writing-shape/guide.md) (named-only): Writing, exploit: shape raw material into an article, paragraph by paragraph.

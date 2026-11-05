@@ -88,21 +88,6 @@
       }
     },
     {
-      "id": "implement-spec",
-      "bucket": "engineering",
-      "description": "Implement the result of /to-spec and /to-tickets in code.",
-      "promoted": true,
-      "implicit": false,
-      "host": "portable",
-      "guide": "references/engineering/implement-spec/guide.md",
-      "source_path": "skills/engineering/implement-spec/SKILL.md",
-      "source_metadata": {
-        "name": "implement-spec",
-        "description": "Implement the result of /to-spec and /to-tickets in code.",
-        "disable-model-invocation": true
-      }
-    },
-    {
       "id": "implement",
       "bucket": "engineering",
       "description": "Implement a piece of work based on a spec or set of tickets.",
@@ -114,6 +99,21 @@
       "source_metadata": {
         "name": "implement",
         "description": "Implement a piece of work based on a spec or set of tickets.",
+        "disable-model-invocation": true
+      }
+    },
+    {
+      "id": "implement-spec",
+      "bucket": "engineering",
+      "description": "Implement the result of /to-spec and /to-tickets in code.",
+      "promoted": true,
+      "implicit": false,
+      "host": "portable",
+      "guide": "references/engineering/implement-spec/guide.md",
+      "source_path": "skills/engineering/implement-spec/SKILL.md",
+      "source_metadata": {
+        "name": "implement-spec",
+        "description": "Implement the result of /to-spec and /to-tickets in code.",
         "disable-model-invocation": true
       }
     },
@@ -464,6 +464,21 @@
       "source_metadata": {
         "name": "setup-ts-deep-modules",
         "description": "Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reachable only through its entry-point files. User-invoked.",
+        "disable-model-invocation": true
+      }
+    },
+    {
+      "id": "software-factory",
+      "bucket": "in-progress",
+      "description": "Shared language for designing a software factory: the tasks it runs and the services it plugs into.",
+      "promoted": false,
+      "implicit": false,
+      "host": "portable",
+      "guide": "references/in-progress/software-factory/guide.md",
+      "source_path": "skills/in-progress/software-factory/SKILL.md",
+      "source_metadata": {
+        "name": "software-factory",
+        "description": "Shared language for designing a software factory: the tasks it runs and the services it plugs into.",
         "disable-model-invocation": true
       }
     },
