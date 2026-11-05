@@ -20,17 +20,25 @@ class BundleTests(unittest.TestCase):
         self.assertEqual(list(BUNDLE.rglob("openai.yaml")), [BUNDLE / "agents/openai.yaml"])
 
     def test_inventory_and_assets(self):
+        lock = json.loads((ROOT / "source-lock.json").read_text(encoding="utf-8"))
+        manifest = json.loads((BUNDLE / "references/sources.json").read_text(encoding="utf-8"))
         items = catalog()
-        self.assertEqual(len(items), 38)
-        self.assertEqual(len({item["id"] for item in items}), 38)
-        self.assertEqual(sum(item["promoted"] for item in items), 27)
+        expected = sum(len(names) for names in lock["groups"].values())
+        self.assertGreaterEqual(expected, 30)
+        self.assertEqual(len(items), expected)
+        self.assertEqual(len({item["id"] for item in items}), expected)
+        self.assertEqual(sum(item["promoted"] for item in items),
+                         len(lock["groups"]["engineering"]) + len(lock["groups"]["productivity"]))
         for item in items:
             self.assertTrue((BUNDLE / item["guide"]).is_file(), item["id"])
+        support = [name for name in manifest["source_sha256"]
+                   if not name.endswith("/SKILL.md") and "/agents/" not in name]
         source_files = [
-            path for bucket in ("engineering", "productivity", "in-progress", "misc")
-            for path in (BUNDLE / "references" / bucket).rglob("*") if path.is_file()
+            path for bucket in lock["groups"] for path in (BUNDLE / "references" / bucket).rglob("*") if path.is_file()
         ]
-        self.assertEqual(len(source_files), 38 + 27)
+        self.assertEqual(len(source_files), expected + len(support))
+        self.assertEqual(manifest["source"], lock["source"])
+        self.assertEqual(manifest["upstream"], lock["upstream"])
 
     def test_catalog_keeps_invocation_policies(self):
         items = {item["id"]: item for item in catalog()}
