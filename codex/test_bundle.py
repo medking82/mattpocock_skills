@@ -40,6 +40,31 @@ class BundleTests(unittest.TestCase):
         self.assertEqual(manifest["source"], lock["source"])
         self.assertEqual(manifest["upstream"], lock["upstream"])
 
+    def test_workflow_map_routes_every_promoted_workflow(self):
+        text = (BUNDLE / "SKILL.md").read_text(encoding="utf-8")
+        table = text.split("<!-- workflow-map:start -->", 1)[1].split("<!-- workflow-map:end -->", 1)[0]
+        routed = re.findall(r"^\| [^|]+ \| \[([a-z0-9-]+)\]\((references/[^)]+)\) \|$", table, flags=re.M)
+        ids = [name for name, _ in routed]
+        self.assertEqual(len(ids), len(set(ids)))
+        promoted = {item["id"]: item["guide"] for item in catalog() if item["promoted"]}
+        self.assertEqual(set(ids), set(promoted))
+        for name, guide in routed:
+            self.assertEqual(guide, promoted[name], name)
+
+    def test_workflow_map_adds_new_and_skips_removed_workflows(self):
+        import build_bundle
+        entries = [
+            {"id": "tdd", "promoted": True, "guide": "references/engineering/tdd/guide.md", "description": "x"},
+            {"id": "brand-new", "promoted": True, "guide": "references/engineering/brand-new/guide.md",
+             "description": "Plan a launch | ship it. Use when releasing."},
+            {"id": "beta-only", "promoted": False, "guide": "references/misc/beta-only/guide.md", "description": "y"},
+        ]
+        table = build_bundle.render_map(entries)
+        self.assertIn("| Concrete behavior and regression tests | [tdd](references/engineering/tdd/guide.md) |", table)
+        self.assertIn("| Plan a launch / ship it | [brand-new](references/engineering/brand-new/guide.md) |", table)
+        self.assertNotIn("beta-only", table)
+        self.assertNotIn("diagnosing-bugs", table)
+
     def test_catalog_keeps_invocation_policies(self):
         items = {item["id"]: item for item in catalog()}
         self.assertTrue(items["code-review"]["promoted"] and items["code-review"]["implicit"])
