@@ -12,6 +12,36 @@ import yaml
 ROOT = Path(__file__).resolve().parent
 BUNDLE = ROOT / "skills"
 BUCKETS = ("engineering", "productivity", "in-progress", "misc")
+MAP_START, MAP_END = "<!-- workflow-map:start -->", "<!-- workflow-map:end -->"
+
+
+def task_phrase(description):
+    """First sentence of an upstream description, for a promoted workflow without a curated row."""
+    sentence = re.split(r"(?<=[.!?])\s", " ".join(description.split()), maxsplit=1)[0].rstrip(".")
+    return sentence if len(sentence) <= 90 else sentence[:87].rstrip() + "..."
+
+
+def render_map(entries):
+    """Route every promoted workflow: curated wording and order first, then upstream additions."""
+    curated = json.loads((ROOT / "workflow-map.json").read_text(encoding="utf-8"))["rows"]
+    if len({row["id"] for row in curated}) != len(curated):
+        raise ValueError("Duplicate workflow ID in workflow-map.json")
+    promoted = {item["id"]: item for item in entries if item["promoted"]}
+    rows = [(row["task"], promoted[row["id"]]) for row in curated if row["id"] in promoted]
+    routed = {item["id"] for _, item in rows}
+    rows += [(task_phrase(item["description"]), item) for item in promoted.values() if item["id"] not in routed]
+    lines = ["| Task | Starting Workflow |", "| --- | --- |"]
+    lines += [f"| {task.replace('|', '/')} | [{item['id']}]({item['guide']}) |" for task, item in rows]
+    return "\n".join(lines)
+
+
+def render_entrypoint(entries):
+    """Regenerate only the marked Workflow Map; the rest of SKILL.md stays hand-written."""
+    text = (BUNDLE / "SKILL.md").read_text(encoding="utf-8")
+    if text.count(MAP_START) != 1 or text.count(MAP_END) != 1 or text.index(MAP_START) > text.index(MAP_END):
+        raise ValueError("SKILL.md needs exactly one workflow-map marker pair")
+    start, end = text.index(MAP_START) + len(MAP_START), text.index(MAP_END)
+    return (text[:start] + "\n" + render_map(entries) + "\n" + text[end:]).encode("utf-8")
 
 
 def parse_frontmatter(block, name):
@@ -134,6 +164,8 @@ def render():
         "packaged_sha256": {name: hashlib.sha256(data).hexdigest() for name, data in sorted(generated.items())},
     }
     generated["references/sources.json"] = (json.dumps(manifest, indent=2) + "\n").encode("utf-8")
+    # Outside the source manifest: SKILL.md stays a hand-written entrypoint with a generated map.
+    generated["SKILL.md"] = render_entrypoint(entries)
     return generated
 
 

@@ -37,7 +37,12 @@ in the fork).
 in-progress and misc buckets, rewrites `source-lock.json`, and rebuilds with
 `build_bundle.py --replace`, which overwrites changed references and deletes
 ones the source dropped. `deprecated/` is never bundled. Hand-written files
-(`SKILL.md`, `agents/`, `compatibility.md`) are never touched by a refresh.
+(`SKILL.md`, `agents/`, `compatibility.md`) are never touched by a refresh, except
+the Workflow Map between the `workflow-map` markers in `SKILL.md`. The builder
+generates that table so every promoted workflow is routed: curated wording and order
+come from `workflow-map.json`, and a promoted workflow upstream adds later gets a row
+from the first sentence of its description until someone curates it. `test_bundle.py`
+fails if any promoted workflow is missing from the map.
 
 Manual refresh, from a full-history checkout of the fork's `main` with upstream
 fetched to a ref (for example `git fetch https://github.com/mattpocock/skills.git

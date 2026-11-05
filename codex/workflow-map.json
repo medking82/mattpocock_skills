@@ -1,0 +1,32 @@
+{
+  "note": "Curated task wording and order for the generated Workflow Map in skills/SKILL.md. Promoted workflows missing here still get a row from their upstream description; ids upstream removed are skipped.",
+  "rows": [
+    {"id": "diagnosing-bugs", "task": "Hard bug, regression, intermittent failure"},
+    {"id": "tdd", "task": "Concrete behavior and regression tests"},
+    {"id": "implement", "task": "Implement one scoped spec or ticket"},
+    {"id": "implement-spec", "task": "Implement a spec's existing ticket graph"},
+    {"id": "code-review", "task": "Review a branch, diff or PR"},
+    {"id": "grill-with-docs", "task": "Unclear idea or trade-off in a repository"},
+    {"id": "grill-me", "task": "Challenge an idea without saved project docs"},
+    {"id": "grilling", "task": "Quick stress-test of a plan, decision or idea on a 'grill' request"},
+    {"id": "to-spec", "task": "Turn settled requirements into a spec"},
+    {"id": "to-tickets", "task": "Break an existing spec into tickets"},
+    {"id": "wayfinder", "task": "Large effort with unresolved decisions"},
+    {"id": "triage", "task": "Incoming bug reports and requests"},
+    {"id": "setup-matt-pocock-skills", "task": "Set up a repo's issue tracker, triage labels and domain docs for these workflows"},
+    {"id": "codebase-design", "task": "Improve a module interface or test seam"},
+    {"id": "improve-codebase-architecture", "task": "Survey architectural opportunities"},
+    {"id": "domain-modeling", "task": "Domain terms, glossary or ADRs"},
+    {"id": "prototype", "task": "Answer one design question with runnable code"},
+    {"id": "research", "task": "Primary-source research"},
+    {"id": "wizard", "task": "Guided script for steps only a human can do: credentials, CI secrets, dashboards"},
+    {"id": "pr", "task": "PR description and evidence"},
+    {"id": "retro", "task": "Session retrospective"},
+    {"id": "handoff", "task": "Handoff document"},
+    {"id": "teach", "task": "Teach a concept across sessions"},
+    {"id": "wait-what", "task": "Explain a confusing answer"},
+    {"id": "to-questionnaire", "task": "Questionnaire for someone else's knowledge"},
+    {"id": "writing-for-agents", "task": "Agent instructions and documentation"},
+    {"id": "ask-matt", "task": "How the workflow phases relate to each other"}
+  ]
+}
