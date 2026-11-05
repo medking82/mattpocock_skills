@@ -1,0 +1,109 @@
+name: Refresh skills umbrella
+
+# Rebuilds the codex/skills-umbrella bundle from this fork's main after the upstream sync,
+# so the installed `skills` skill follows upstream without a manual bump. The tooling and
+# the bundle live on codex/skills-umbrella (codex/README.md); this file only has to sit on
+# the default branch because scheduled workflows run from there.
+on:
+  schedule:
+    # Thirty minutes after fork-sync-upstream.yml ('57 */6 * * *').
+    - cron: '27 */6 * * *'
+  push:
+    branches: [main]
+    paths: ['skills/**']
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: refresh-skills-umbrella
+  cancel-in-progress: false
+
+env:
+  UMBRELLA_BRANCH: codex/skills-umbrella
+  UPSTREAM_URL: https://github.com/mattpocock/skills.git
+
+jobs:
+  notice:
+    if: github.repository == 'medking82/mattpocock_skills' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      quiet: ${{ steps.check.outputs.quiet }}
+    steps:
+      - name: Check today's failure notice
+        id: check
+        uses: medking82/skills/.github/actions/upstream-sync-notice@main
+        with:
+          mode: check
+
+  refresh:
+    needs: notice
+    # A failed notice job must not skip the refresh; it then reports normally.
+    if: ${{ !cancelled() && github.repository == 'medking82/mattpocock_skills' && github.ref == 'refs/heads/main' }}
+    # After the day's first failure email, a scheduled retry that fails again stays green.
+    continue-on-error: ${{ needs.notice.outputs.quiet == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # The push only adds a commit under codex/, never a workflow file, so GITHUB_TOKEN is enough.
+    permissions:
+      contents: write
+    steps:
+      - name: Check out the fork's main
+        uses: actions/checkout@v4
+        with:
+          path: fork
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Check out the umbrella branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.UMBRELLA_BRANCH }}
+          path: umbrella
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install PyYAML
+        run: python -m pip install pyyaml
+
+      - name: Fetch upstream
+        run: git -C fork fetch --no-tags "$UPSTREAM_URL" main:refs/remotes/upstream/main
+
+      - name: Rebuild the bundle from the fork's main
+        run: python -B umbrella/codex/refresh_bundle.py --fork fork --ref HEAD --upstream-ref refs/remotes/upstream/main
+
+      - name: Run the bundle tests
+        run: python -B umbrella/codex/test_bundle.py
+
+      - name: Push the refreshed bundle
+        working-directory: umbrella
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -A codex/skills codex/source-lock.json
+          if git diff --cached --quiet; then
+            echo "The bundle already matches the fork's main."
+            exit 0
+          fi
+          source_commit="$(python -c "import json; print(json.load(open('codex/source-lock.json'))['source']['commit'][:7])")"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Refresh bundled Matt Pocock workflows to $source_commit" \
+            -m "Automated by .github/workflows/refresh-skills-umbrella.yml on main."
+          # A plain push: if the branch moved meanwhile, fail loudly and retry next run.
+          git push origin "HEAD:refs/heads/$UMBRELLA_BRANCH"
+
+  mark:
+    needs: [notice, refresh]
+    if: ${{ !cancelled() && needs.refresh.result == 'failure' && needs.notice.outputs.quiet != 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Remember today's failure notice
+        uses: medking82/skills/.github/actions/upstream-sync-notice@main
+        with:
+          mode: mark
