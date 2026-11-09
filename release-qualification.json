@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "runnerRepository": "medking82/hermes-fleet-sync",
+  "runnerCommit": "4f79a5b4452d9a91037e4cbf564a927b44e2bac6",
+  "projects": {
+    "offline": {
+      "scope": "full-offline",
+      "localReuse": true,
+      "suites": [
+        {
+          "name": "bundle",
+          "runner": "unittest",
+          "argv": [
+            "{python}",
+            "-B",
+            "-m",
+            "unittest",
+            "-v",
+            "test_bundle"
+          ],
+          "cwd": "codex"
+        }
+      ]
+    }
+  }
+}
