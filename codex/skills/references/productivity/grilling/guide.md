@@ -1,4 +1,4 @@
-> Source: [skills/productivity/grilling/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/productivity/grilling/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/productivity/grilling/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/d18183fe9d96e1240105a8534e53591e9b49afd7/skills/productivity/grilling/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 Interview the user relentlessly until you reach a shared understanding. Map this as a **design tree**: every decision branches into the decisions that hang off it.

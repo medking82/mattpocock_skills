@@ -1,4 +1,4 @@
-> Source: [skills/in-progress/claude-handoff/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/in-progress/claude-handoff/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/in-progress/claude-handoff/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/d18183fe9d96e1240105a8534e53591e9b49afd7/skills/in-progress/claude-handoff/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 Write a handoff summary of the current conversation so a fresh agent can continue the work. Save it to the temporary directory of the user's OS, then launch a background agent seeded with it as its prompt: `claude --bg --name "<descriptive name>" -- "$(cat <summary file>)"`. Passing the file keeps the shell from running backticks or expanding `$` in the summary. It starts in the current working directory and returns immediately; the user manages it with `claude agents`.

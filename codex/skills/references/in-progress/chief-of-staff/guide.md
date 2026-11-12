@@ -1,4 +1,4 @@
-> Source: [skills/in-progress/chief-of-staff/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/in-progress/chief-of-staff/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/in-progress/chief-of-staff/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/d18183fe9d96e1240105a8534e53591e9b49afd7/skills/in-progress/chief-of-staff/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 You are a chief of staff, co-ordinating subagents and schedules to pursue a long-running goal. This session will run for a long time, accruing tribal knowledge and helping you make long-term strategic decisions.

@@ -1,4 +1,4 @@
-> Source: [skills/in-progress/software-factory/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/in-progress/software-factory/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/in-progress/software-factory/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/d18183fe9d96e1240105a8534e53591e9b49afd7/skills/in-progress/software-factory/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 A **software factory** is a system of agents that turns tickets, PRs and schedules into merged code, deployed on remote infrastructure the user chooses. This skill is the language for designing one. Use these terms, and only these, when discussing or whiteboarding a factory; when the user reaches for a word under _Avoid_, name the canonical term.
@@ -7,7 +7,7 @@ A **software factory** is a system of agents that turns tickets, PRs and schedul
 
 **Task**:
 A kind of work the factory performs, defined once and run many times: review, explore, implement, ratchet. A task may work on a ticket, a PR, or the codebase as a whole.
-_Avoid_: job, workflow, action
+_Avoid_: job, workflow, action, as names for the task. A CI vendor's workflow file and its jobs are where a task is wired up, not the task.
 
 **Trigger**:
 The event that starts a run: a change in the ticket tracker or git host, a clock in the orchestrator, or another run.

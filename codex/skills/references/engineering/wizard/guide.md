@@ -1,4 +1,4 @@
-> Source: [skills/engineering/wizard/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/4ae2317ddb22b046e26455e4f9c9b3aaaf62212d/skills/engineering/wizard/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/engineering/wizard/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/d18183fe9d96e1240105a8534e53591e9b49afd7/skills/engineering/wizard/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 # Wizard
