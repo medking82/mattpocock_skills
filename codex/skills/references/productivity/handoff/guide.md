@@ -1,4 +1,4 @@
-> Source: [skills/productivity/handoff/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/d18183fe9d96e1240105a8534e53591e9b49afd7/skills/productivity/handoff/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/productivity/handoff/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/9201b96da4af2d663faa13bef984095bb69059b1/skills/productivity/handoff/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to the temporary directory of the user's OS (`$TMPDIR`, else `/tmp`; `%TEMP%` on Windows) - not the current workspace.

@@ -1,4 +1,4 @@
-> Source: [skills/engineering/to-spec/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/d18183fe9d96e1240105a8534e53591e9b49afd7/skills/engineering/to-spec/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/engineering/to-spec/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/9201b96da4af2d663faa13bef984095bb69059b1/skills/engineering/to-spec/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user; just synthesize what you already know.
