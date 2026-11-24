@@ -408,7 +408,7 @@
     {
       "id": "chief-of-staff",
       "bucket": "in-progress",
-      "description": "Pursue a long-running goal in a single session by co-ordinating subagents.",
+      "description": "Delegate the work to fresh subagents and remember what it taught you in a dated wiki, so the next session picks up the thread.",
       "promoted": false,
       "implicit": false,
       "host": "portable",
@@ -416,7 +416,7 @@
       "source_path": "skills/in-progress/chief-of-staff/SKILL.md",
       "source_metadata": {
         "name": "chief-of-staff",
-        "description": "Pursue a long-running goal in a single session by co-ordinating subagents.",
+        "description": "Delegate the work to fresh subagents and remember what it taught you in a dated wiki, so the next session picks up the thread.",
         "disable-model-invocation": true
       }
     },

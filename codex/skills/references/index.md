@@ -37,7 +37,7 @@ Read only the chosen workflow and its required dependencies.
 
 ## In Progress
 
-- [chief-of-staff](in-progress/chief-of-staff/guide.md) (named-only): Pursue a long-running goal in a single session by co-ordinating subagents.
+- [chief-of-staff](in-progress/chief-of-staff/guide.md) (named-only): Delegate the work to fresh subagents and remember what it taught you in a dated wiki, so the next session picks up the thread.
 - [claude-handoff](in-progress/claude-handoff/guide.md) (named-only): Hand the current conversation off to a fresh background agent that picks up the work immediately.
 - [loop-me](in-progress/loop-me/guide.md) (named-only): Grill me about specs for the workflows I want to build, within this workspace.
 - [setup-ts-deep-modules](in-progress/setup-ts-deep-modules/guide.md) (named-only): Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reachable only through its entry-point files. User-invoked.

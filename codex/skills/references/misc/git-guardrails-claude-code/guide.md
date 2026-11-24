@@ -1,4 +1,4 @@
-> Source: [skills/misc/git-guardrails-claude-code/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/9201b96da4af2d663faa13bef984095bb69059b1/skills/misc/git-guardrails-claude-code/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/misc/git-guardrails-claude-code/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/742afa6b936d17c8dcc790748840e4992edd42fa/skills/misc/git-guardrails-claude-code/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 # Setup Git Guardrails
