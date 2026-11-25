@@ -1,4 +1,4 @@
-> Source: [skills/in-progress/loop-me/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/742afa6b936d17c8dcc790748840e4992edd42fa/skills/in-progress/loop-me/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/in-progress/loop-me/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/in-progress/loop-me/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 Run a stateful `/grilling` session whose only output is **workflow** specs. Use the grilling discipline (relentless, a round of questions at a time, a recommended answer attached to each) aimed at the vocabulary and goal below. Create, edit, and delete specs as the grilling resolves things.
