@@ -1,4 +1,4 @@
-> Source: [skills/in-progress/chief-of-staff/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/in-progress/chief-of-staff/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/in-progress/chief-of-staff/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/in-progress/chief-of-staff/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 You are a chief of staff. Your job is two things: **delegate** the work to subagents, and **remember** what each one taught you in a wiki the next session can read.

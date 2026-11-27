@@ -41,9 +41,9 @@ _Avoid_: Client, buyer, account
 
 ## Contexts
 
-- [Ordering](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/engineering/domain-modeling/src/ordering/GLOSSARY.md): receives and tracks customer orders
-- [Billing](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/engineering/domain-modeling/src/billing/GLOSSARY.md): generates invoices and processes payments
-- [Fulfillment](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/engineering/domain-modeling/src/fulfillment/GLOSSARY.md): manages warehouse picking and shipping
+- [Ordering](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/engineering/domain-modeling/src/ordering/GLOSSARY.md): receives and tracks customer orders
+- [Billing](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/engineering/domain-modeling/src/billing/GLOSSARY.md): generates invoices and processes payments
+- [Fulfillment](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/engineering/domain-modeling/src/fulfillment/GLOSSARY.md): manages warehouse picking and shipping
 
 ## Relationships
 

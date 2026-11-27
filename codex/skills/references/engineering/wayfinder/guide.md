@@ -1,4 +1,4 @@
-> Source: [skills/engineering/wayfinder/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/engineering/wayfinder/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/engineering/wayfinder/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/engineering/wayfinder/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 A loose idea has arrived, too big for one agent session, and wrapped in fog: the way from here to the **destination** isn't visible yet. Wayfinding is about finding that way, not charging at the destination. This skill charts the way as a **shared map** on the repo's issue tracker, then works its **decision tickets** (questions whose resolution is a decision, not slices of a build to execute) one at a time until the route is clear.
@@ -38,7 +38,7 @@ The whole map at low resolution, loaded once per session. Open tickets are **not
 
 <!-- the index: one line per closed ticket, enough to judge relevance, then zoom the link for the detail the ticket holds -->
 
-- [<closed ticket title>](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/engineering/wayfinder/link): <one-line gist of the answer>
+- [<closed ticket title>](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/engineering/wayfinder/link): <one-line gist of the answer>
 
 ## Not yet specified
 

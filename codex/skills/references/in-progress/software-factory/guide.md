@@ -1,4 +1,4 @@
-> Source: [skills/in-progress/software-factory/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/in-progress/software-factory/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/in-progress/software-factory/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/in-progress/software-factory/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 A **software factory** is a system of agents that turns tickets, PRs and schedules into merged code, deployed on remote infrastructure the user chooses. This skill is the language for designing one. Use these terms, and only these, when discussing or whiteboarding a factory; when the user reaches for a word under _Avoid_, name the canonical term.

@@ -1,4 +1,4 @@
-> Source: [skills/in-progress/setup-ts-deep-modules/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/in-progress/setup-ts-deep-modules/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/in-progress/setup-ts-deep-modules/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/in-progress/setup-ts-deep-modules/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 # Setup TS Deep Modules
@@ -87,7 +87,7 @@ This is the completion criterion for the whole skill: a config that doesn't fail
 
 Write a `README.md` **in the packages folder** (`<packages-root>/README.md`, next to the packages it governs) covering: the `src/packages/<name>/` layout (entry points at the root, `lib/` for implementation, `tests/` for tests), "import only through a package's entry points (its root files)", and how to run `lint:boundaries`. **Discourage barrel files** explicitly: expose several small entry points instead of re-exporting a whole subtree through one index. Keep it to the copy-me snippet plus the four rules in one paragraph each.
 
-Then add a **context pointer** to it from the repo's agent-instructions file (`CLAUDE.md` if present, else `AGENTS.md`, creating `AGENTS.md` if neither exists). One line is enough, e.g. `Packages are deep modules: see [src/packages/README.md](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/in-progress/setup-ts-deep-modules/src/packages/README.md) before adding or importing one.` This is what makes an agent discover the boundary rule instead of tripping over it.
+Then add a **context pointer** to it from the repo's agent-instructions file (`CLAUDE.md` if present, else `AGENTS.md`, creating `AGENTS.md` if neither exists). One line is enough, e.g. `Packages are deep modules: see [src/packages/README.md](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/in-progress/setup-ts-deep-modules/src/packages/README.md) before adding or importing one.` This is what makes an agent discover the boundary rule instead of tripping over it.
 
 **Done when:** `<packages-root>/README.md` exists and discourages barrels, and the repo's `CLAUDE.md`/`AGENTS.md` links to it.
 

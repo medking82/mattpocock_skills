@@ -1,4 +1,4 @@
-> Source: [skills/productivity/teach/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/2b7ab8c9471fad3fca0a9c0c9e1f52153408172b/skills/productivity/teach/SKILL.md). Adapted for the single skills entrypoint.
+> Source: [skills/productivity/teach/SKILL.md](https://github.com/medking82/mattpocock_skills/blob/70c7fbbbe3a8cdf2cc193aa29f0a1b3a0f852c2d/skills/productivity/teach/SKILL.md). Adapted for the single skills entrypoint.
 > Apply [Codex compatibility](../../compatibility.md) before these source instructions.
 
 The user has asked you to teach them something. This is a stateful request - they intend to learn the topic over multiple sessions.
